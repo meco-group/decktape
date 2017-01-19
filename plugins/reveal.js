@@ -28,7 +28,7 @@ Reveal.prototype = {
             Reveal.configure({
                 controls: false,
                 progress: true,
-                fragments: fragments,
+                fragments: true,
                 transition: 'none',
                 slideNumber: true
             });
