@@ -27,8 +27,10 @@ Reveal.prototype = {
         this.page.evaluate(function (fragments) {
             Reveal.configure({
                 controls: false,
-                progress: false,
-                fragments: fragments
+                progress: true,
+                fragments: fragments,
+                transition: 'none',
+                slideNumber: true
             });
         // It seems passing 'fragments=true' in the URL query string does not take precedence
         // over globally configured 'fragments' and prevents from being able to toggle fragments
@@ -48,7 +50,7 @@ Reveal.prototype = {
     hasNextSlide: function () {
         // FIXME: does not work when there is a stack or some index-less fragments into account
         return this.page.evaluate(function () {
-            return !Reveal.isLastSlide();
+            return (!Reveal.isLastSlide() || Reveal.availableFragments().next);
         });
     },
 
